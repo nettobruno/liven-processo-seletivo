@@ -15,9 +15,9 @@ Para que você possa rodar o projeto em sua máquina é necessário ter algumas 
 - Execute `yarn` ou `npm install`
 - E agora é só rodar o projeto com um dos comandos a seguir: `yarn start OU npm start`
 
-### ✅ Features
+### ✅ Especificações
 
-- [ ] Utilizar React ou React Native com TypeScript
+- [x] Utilizar React ou React Native com TypeScript
 - [ ] Tela de exibição de produtos
 - [ ] Carrinho de compras
 - [ ] Adicionar ou remover itens do carrinho de compras
