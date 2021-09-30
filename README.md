@@ -17,9 +17,8 @@ Para que você possa rodar o projeto em sua máquina é necessário ter algumas 
 
 ### ✅ Features
 
-- [ ] Utilizar React ou React Native com TypeScript
-- [ ] Tela de exibição de produtos
+- [x] Utilizar React ou React Native com TypeScript
+- [x] Tela de exibição de produtos
 - [ ] Carrinho de compras
 - [ ] Adicionar ou remover itens do carrinho de compras
 - [ ] Testes
-- [ ] Página de E-mail
