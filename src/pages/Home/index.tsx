@@ -43,6 +43,7 @@ const Home: React.FC = () => {
       </Header>
 
       <div className="container">
+        <h1>Listagem de produtos</h1>
         <SectionProducts>
           {products.map((i: any) => (
             <Product key={i.id}>

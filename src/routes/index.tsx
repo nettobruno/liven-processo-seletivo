@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Pages
 import Home from '../pages/Home';
+import Card from '../pages/Card';
 
 const Routes: React.FC = () => {
   return (
@@ -11,6 +12,10 @@ const Routes: React.FC = () => {
       <Switch>
         <Route path="/" exact>
           <Home />
+        </Route>
+
+        <Route path="/card">
+          <Card />
         </Route>
       </Switch>
     </Router>
