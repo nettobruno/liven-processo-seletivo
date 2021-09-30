@@ -1,10 +1,16 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import Routes from './routes/index';
+import GlobalStyle from './styles/global';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="App">
-      <p>Abriu</p>
-    </div>
+    <>
+      <GlobalStyle />
+      <ToastContainer />
+      <Routes />
+    </>
   );
 }
 
