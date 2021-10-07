@@ -1,5 +1,7 @@
 // Dependencies
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 // Styles
@@ -19,6 +21,8 @@ interface ProductData {
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
+  const history = useHistory();
+  let getItems: any = [];
 
   async function getAllProducts() {
     axios
@@ -29,7 +33,43 @@ const Home: React.FC = () => {
   }
 
   async function addCard(id: string) {
-    console.log(id);
+    let result: any;
+
+    await axios
+      .get(`https://5d6da1df777f670014036125.mockapi.io/api/v1/product/${id}`)
+      .then((response: any) => {
+        if (localStorage.getItem('item')) {
+          getItems = JSON.parse(localStorage.getItem('item') as string);
+          result = getItems.find((i: any) => i.id === id);
+        }
+
+        if (result === undefined) {
+          getItems.push(response.data);
+          localStorage.setItem('item', JSON.stringify(getItems));
+
+          history.push('/card');
+
+          toast.success('Produto adicionado ao carrinho', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+          toast.error('Este produto já se encontra no carrinho', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      });
   }
 
   useEffect(() => {

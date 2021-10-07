@@ -19,6 +19,6 @@ Para que você possa rodar o projeto em sua máquina é necessário ter algumas 
 
 - [x] Utilizar React ou React Native com TypeScript
 - [x] Tela de exibição de produtos
-- [ ] Carrinho de compras
+- [x] Carrinho de compras
 - [ ] Adicionar ou remover itens do carrinho de compras
 - [ ] Testes
