@@ -43,8 +43,18 @@ const Home: React.FC = () => {
           result = getItems.find((i: any) => i.id === id);
         }
 
+        const newItem = {
+          id: response.data.id,
+          createdAt: response.data.createdAt,
+          name: response.data.name,
+          price: response.data.price,
+          image: response.data.image,
+          stock: response.data.stock,
+          total: 1,
+        };
+
         if (result === undefined) {
-          getItems.push(response.data);
+          getItems.push(newItem);
           localStorage.setItem('item', JSON.stringify(getItems));
 
           history.push('/card');
@@ -96,6 +106,14 @@ const Home: React.FC = () => {
                 <Button type="button" onClick={() => addCard(i.id)}>
                   Adicionar ao Carrinho
                 </Button>
+
+                {/* <button type="button" onClick={() => addItem(i.id)}>
+                  Add
+                </button>
+
+                <button type="button" onClick={() => removeItem(i.id)}>
+                  remove
+                </button> */}
               </div>
             </Product>
           ))}
