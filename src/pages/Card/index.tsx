@@ -1,19 +1,29 @@
 // Dependencies
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // Styles
-import { Container, Header, SectionProducts, Product, Button } from './styles';
+import { Container, Header, SectionProducts, Product } from './styles';
 
 // Imagens
+import imageArrow from '../../assets/arrow.png';
 import imageLogo from '../../assets/logo.png';
+import imageTrash from '../../assets/trash.png';
 
 const Card: React.FC = () => {
+  const history = useHistory();
   const [products, setProducts] = useState<any[]>([]);
 
   function getProducts() {
     setProducts(JSON.parse(localStorage.getItem('item') as string));
   }
 
+  function backPage() {
+    history.goBack();
+  }
+
+  // Possibilita aumentar o número de itens que o usuário deseja de um produto
   function add(idItem: string) {
     const items = JSON.parse(localStorage.getItem('item') || '');
 
@@ -26,6 +36,7 @@ const Card: React.FC = () => {
     setProducts(items);
   }
 
+  // Possibilita diminuir o número de itens que o usuário deseja de um produto
   function remove(idItem: string) {
     const items = JSON.parse(localStorage.getItem('item') || '');
 
@@ -38,6 +49,7 @@ const Card: React.FC = () => {
     setProducts(items);
   }
 
+  // Possibilita excluir um item do carrinho
   function deleteItem(idItem: string) {
     const items = JSON.parse(localStorage.getItem('item') || '');
 
@@ -48,6 +60,16 @@ const Card: React.FC = () => {
     localStorage.setItem('item', JSON.stringify(items));
 
     setProducts(items);
+
+    toast.success('Produto removido com sucesso', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 
   useEffect(() => {
@@ -57,6 +79,10 @@ const Card: React.FC = () => {
   return (
     <Container>
       <Header>
+        <button type="button" onClick={() => backPage()}>
+          <img src={imageArrow} alt="" />
+        </button>
+
         <img src={imageLogo} alt="" />
       </Header>
 
@@ -74,21 +100,29 @@ const Card: React.FC = () => {
                 </div>
 
                 <div>
-                  <p className="stock">Qtd. {i.stock}</p>
-                  <p className="stock">Unidades. {i.total}</p>
+                  <p className="stock">Qtd: {i.stock}</p>
+                  <div className="unidade">
+                    <p className="stock">Unidades:</p>
+
+                    <button type="button" onClick={() => remove(i.id)}>
+                      -
+                    </button>
+
+                    <p className="value">{i.total}</p>
+
+                    <button type="button" onClick={() => add(i.id)}>
+                      +
+                    </button>
+                  </div>
                 </div>
 
                 <div>
-                  <Button type="button" onClick={() => deleteItem(i.id)}>
-                    Adicionar ao Carrinho
-                  </Button>
-
-                  <button type="button" onClick={() => add(i.id)}>
-                    Adicionar
-                  </button>
-
-                  <button type="button" onClick={() => remove(i.id)}>
-                    Remover
+                  <button
+                    type="button"
+                    className="btn-trash"
+                    onClick={() => deleteItem(i.id)}
+                  >
+                    <img src={imageTrash} alt="" />
                   </button>
                 </div>
               </Product>

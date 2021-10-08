@@ -9,6 +9,7 @@ import { Container, Header, SectionProducts, Product, Button } from './styles';
 
 // Imagens
 import imageLogo from '../../assets/logo.png';
+import imageBag from '../../assets/bag.png';
 
 interface ProductData {
   createdAt: string;
@@ -21,8 +22,23 @@ interface ProductData {
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
+  const [itemsCard, setItemsCard] = useState<any>();
+
   const history = useHistory();
   let getItems: any = [];
+
+  function cardPage() {
+    history.push('/card');
+  }
+
+  function getCardProducts() {
+    if (!localStorage.getItem('item')) {
+      setItemsCard(0);
+    } else {
+      const items = JSON.parse(localStorage.getItem('item') as string);
+      setItemsCard(items.length);
+    }
+  }
 
   async function getAllProducts() {
     axios
@@ -60,7 +76,7 @@ const Home: React.FC = () => {
           history.push('/card');
 
           toast.success('Produto adicionado ao carrinho', {
-            position: 'top-right',
+            position: 'bottom-right',
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -70,7 +86,7 @@ const Home: React.FC = () => {
           });
         } else {
           toast.error('Este produto já se encontra no carrinho', {
-            position: 'top-right',
+            position: 'bottom-right',
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -84,11 +100,22 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     getAllProducts();
+    getCardProducts();
   }, []);
 
   return (
     <Container>
       <Header>
+        <button type="button" onClick={() => cardPage()}>
+          <img src={imageBag} alt="" />
+        </button>
+
+        {itemsCard && (
+          <div className="itemsCard">
+            <p>{itemsCard}</p>
+          </div>
+        )}
+
         <img src={imageLogo} alt="" />
       </Header>
 

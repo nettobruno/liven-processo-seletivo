@@ -22,6 +22,23 @@ export const Header = styled.header`
   justify-content: center;
   align-items: center;
 
+  button {
+    background-color: transparent;
+
+    position: absolute;
+    left: 30px;
+  }
+
+  button img {
+    width: 50px;
+    transition: all.3s;
+  }
+
+  button img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+
   img {
     width: 150px;
   }
@@ -32,7 +49,7 @@ export const SectionProducts = styled.div`
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: 23 0px;
+  grid-auto-rows: 200px;
   grid-gap: 20px;
 `;
 
@@ -45,20 +62,13 @@ export const Product = styled.div`
   border-radius: 10px;
 
   align-items: center;
-  justify-content: center;
+  justify-items: center;
 
   img {
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-
-  div {
-    padding: 20px;
-  }
-
-  p {
-    margin-bottom: 10px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 200px;
   }
 
   .name {
@@ -78,19 +88,39 @@ export const Product = styled.div`
     font-size: 16px;
     font-weight: 300;
   }
-`;
 
-export const Button = styled.button`
-  background-color: #08012a;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  padding: 20px;
-  width: 100%;
+  .unidade {
+    display: flex;
+    align-items: center;
+  }
 
-  :hover {
+  .unidade button {
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 5px 10px;
+  }
+
+  .unidade button:hover {
     cursor: pointer;
-    text-decoration: underline;
-    background-color: #08015f;
+  }
+
+  .value {
+    margin: 10px;
+  }
+
+  .btn-trash {
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  .btn-trash img {
+    width: 50px;
+    height: 50px;
+    object-fit: none;
+    background-color: #c3c3c3;
+  }
+
+  .btn-trash img:hover {
+    cursor: pointer;
   }
 `;

@@ -21,6 +21,39 @@ export const Header = styled.header`
   justify-content: center;
   align-items: center;
 
+  div {
+    background-color: red;
+    border-radius: 15px;
+    color: white;
+    position: absolute;
+    right: 30px;
+    top: 50px;
+
+    height: 25px;
+    width: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    background-color: transparent;
+
+    position: absolute;
+    right: 30px;
+  }
+
+  button img {
+    width: 50px;
+    transition: all.3s;
+  }
+
+  button img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+
   img {
     width: 150px;
   }
