@@ -102,7 +102,7 @@ const Card: React.FC = () => {
                 <div>
                   <p className="stock">Qtd: {i.stock}</p>
                   <div className="unidade">
-                    <p className="stock">Unidades:</p>
+                    <p className="amount">Unidades:</p>
 
                     <button type="button" onClick={() => remove(i.id)}>
                       -

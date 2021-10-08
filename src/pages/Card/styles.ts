@@ -51,6 +51,10 @@ export const SectionProducts = styled.div`
   grid-template-columns: 1fr;
   grid-auto-rows: 200px;
   grid-gap: 20px;
+
+  @media (max-width: 750px) {
+    grid-auto-rows: 450px;
+  }
 `;
 
 export const Product = styled.div`
@@ -89,6 +93,12 @@ export const Product = styled.div`
     font-weight: 300;
   }
 
+  .amount {
+    color: #08012a;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
   .unidade {
     display: flex;
     align-items: center;
@@ -122,5 +132,24 @@ export const Product = styled.div`
 
   .btn-trash img:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    padding: 20px 0;
+
+    .name {
+      margin-bottom: 15px;
+    }
+
+    .price {
+      text-align: center;
+    }
+
+    .stock {
+      text-align: center;
+      margin-bottom: 15px;
+    }
   }
 `;
