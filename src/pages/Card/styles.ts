@@ -31,60 +31,29 @@ export const SectionProducts = styled.div`
   margin-top: 50px;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 600px;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 23 0px;
   grid-gap: 20px;
-
-  @media (max-width: 1600px) {
-    grid-auto-rows: 530px;
-  }
-
-  @media (max-width: 1450px) {
-    grid-auto-rows: 500px;
-  }
-
-  @media (max-width: 1150px) {
-    grid-auto-rows: 450px;
-  }
-
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 530px;
-  }
-
-  @media (max-width: 850px) {
-    grid-auto-rows: 450px;
-  }
-
-  @media (max-width: 650px) {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 600px;
-  }
-
-  @media (max-width: 550px) {
-    grid-auto-rows: 500px;
-  }
-
-  @media (max-width: 450px) {
-    grid-auto-rows: 450px;
-  }
 `;
 
 export const Product = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
   box-shadow: 3px 3px 10px #ddd;
   background-color: white;
   border-radius: 10px;
 
+  align-items: center;
+  justify-content: center;
+
   img {
     width: 100%;
     border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
 
-  .texts {
+  div {
     padding: 20px;
   }
 

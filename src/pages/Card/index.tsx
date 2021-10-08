@@ -36,6 +36,18 @@ const Card: React.FC = () => {
     ]);
   }
 
+  function deleteItem(idItem: string) {
+    const items = JSON.parse(localStorage.getItem('item') || '');
+
+    const index = items.findIndex((i: any) => i.id === idItem);
+
+    items.splice(index, 1);
+
+    localStorage.setItem('item', JSON.stringify(items));
+
+    setProducts(items);
+  }
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -54,12 +66,18 @@ const Card: React.FC = () => {
               <Product key={i.id}>
                 <img src={i.image} alt="" />
 
-                <div className="texts">
+                <div>
                   <p className="name">{i.name}</p>
                   <p className="price">R$ {i.price}</p>
+                </div>
+
+                <div>
                   <p className="stock">Qtd. {i.stock}</p>
                   <p className="stock">Unidades. {i.total}</p>
-                  <Button type="button" onClick={() => console.log(i.id)}>
+                </div>
+
+                <div>
+                  <Button type="button" onClick={() => deleteItem(i.id)}>
                     Adicionar ao Carrinho
                   </Button>
 

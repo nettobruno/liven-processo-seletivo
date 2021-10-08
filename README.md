@@ -21,5 +21,5 @@ Para que você possa rodar o projeto em sua máquina é necessário ter algumas 
 - [x] Tela de exibição de produtos
 - [x] Carrinho de compras
 - [x] Aumentar ou diminuir a quantidade de um produto do carrinho
-- [ ] Excluir item do carrinho de compras
+- [x] Excluir item do carrinho de compras
 - [ ] Testes
