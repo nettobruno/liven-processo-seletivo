@@ -15,25 +15,27 @@ const Card: React.FC = () => {
   }
 
   function add(idItem: string) {
-    const product = products.find((i: any) => i.id === idItem);
+    const items = JSON.parse(localStorage.getItem('item') || '');
+
+    const product = items.find((i: any) => i.id === idItem);
 
     product.total += 1;
 
-    setProducts((prevProducts) => [
-      ...prevProducts.filter((p) => p.id !== idItem),
-      product,
-    ]);
+    localStorage.setItem('item', JSON.stringify(items));
+
+    setProducts(items);
   }
 
   function remove(idItem: string) {
-    const product = products.find((i: any) => i.id === idItem);
+    const items = JSON.parse(localStorage.getItem('item') || '');
+
+    const product = items.find((i: any) => i.id === idItem);
 
     product.total -= 1;
 
-    setProducts((prevProducts) => [
-      ...prevProducts.filter((p) => p.id !== idItem),
-      product,
-    ]);
+    localStorage.setItem('item', JSON.stringify(items));
+
+    setProducts(items);
   }
 
   function deleteItem(idItem: string) {
