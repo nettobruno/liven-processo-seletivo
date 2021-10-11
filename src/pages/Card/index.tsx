@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // Styles
-import { Container, Header, SectionProducts, Product } from './styles';
+import { Container, Header, SectionProducts, Product, Units } from './styles';
 
 // Imagens
 import imageArrow from '../../assets/arrow.png';
@@ -101,7 +101,7 @@ const Card: React.FC = () => {
 
                 <div>
                   <p className="stock">Qtd: {i.stock}</p>
-                  <div className="unidade">
+                  <Units>
                     <p className="amount">Unidades:</p>
 
                     <button type="button" onClick={() => remove(i.id)}>
@@ -113,7 +113,7 @@ const Card: React.FC = () => {
                     <button type="button" onClick={() => add(i.id)}>
                       +
                     </button>
-                  </div>
+                  </Units>
                 </div>
 
                 <div>

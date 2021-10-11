@@ -93,31 +93,6 @@ export const Product = styled.div`
     font-weight: 300;
   }
 
-  .amount {
-    color: #08012a;
-    font-size: 16px;
-    font-weight: 300;
-  }
-
-  .unidade {
-    display: flex;
-    align-items: center;
-  }
-
-  .unidade button {
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 5px 10px;
-  }
-
-  .unidade button:hover {
-    cursor: pointer;
-  }
-
-  .value {
-    margin: 10px;
-  }
-
   .btn-trash {
     border-radius: 0;
     background-color: transparent;
@@ -151,5 +126,30 @@ export const Product = styled.div`
       text-align: center;
       margin-bottom: 15px;
     }
+  }
+`;
+
+export const Units = styled.div`
+  display: flex;
+  align-items: center;
+
+  .amount {
+    color: #08012a;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  button {
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 5px 10px;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  .value {
+    margin: 10px;
   }
 `;

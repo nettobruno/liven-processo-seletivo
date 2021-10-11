@@ -21,7 +21,7 @@ export const Header = styled.header`
   justify-content: center;
   align-items: center;
 
-  div {
+  .quantity-items-cart-circle {
     background-color: red;
     border-radius: 15px;
     color: white;
@@ -122,22 +122,20 @@ export const Product = styled.div`
 
   p {
     margin-bottom: 10px;
+    color: #08012a;
   }
 
   .name {
-    color: #08012a;
     font-size: 20px;
     font-weight: bold;
   }
 
   .price {
-    color: #08012a;
     font-size: 18px;
     font-weight: 400;
   }
 
-  .stock {
-    color: #08012a;
+  .amount {
     font-size: 16px;
     font-weight: 300;
   }

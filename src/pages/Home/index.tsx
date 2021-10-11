@@ -22,24 +22,27 @@ interface ProductData {
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
-  const [itemsCard, setItemsCard] = useState<any>();
+  const [quantityItemsCart, setQuantityItemsCart] = useState<any>();
 
   const history = useHistory();
   let getItems: any = [];
 
+  // Redireciona para página do carrinho de compras
   function cardPage() {
     history.push('/card');
   }
 
+  // Pega a quantidade de itens do carrinho de compras
   function getCardProducts() {
     if (!localStorage.getItem('item')) {
-      setItemsCard(0);
+      setQuantityItemsCart(0);
     } else {
       const items = JSON.parse(localStorage.getItem('item') as string);
-      setItemsCard(items.length);
+      setQuantityItemsCart(items.length);
     }
   }
 
+  // Pega todos os produtos da API
   async function getAllProducts() {
     axios
       .get('https://5d6da1df777f670014036125.mockapi.io/api/v1/product')
@@ -48,15 +51,16 @@ const Home: React.FC = () => {
       });
   }
 
+  // Adiciona um item ao carrinho de compras
   async function addCard(id: string) {
-    let result: any;
+    let item: any;
 
     await axios
       .get(`https://5d6da1df777f670014036125.mockapi.io/api/v1/product/${id}`)
       .then((response: any) => {
         if (localStorage.getItem('item')) {
           getItems = JSON.parse(localStorage.getItem('item') as string);
-          result = getItems.find((i: any) => i.id === id);
+          item = getItems.find((i: any) => i.id === id);
         }
 
         const newItem = {
@@ -69,7 +73,7 @@ const Home: React.FC = () => {
           total: 1,
         };
 
-        if (result === undefined) {
+        if (item === undefined) {
           getItems.push(newItem);
           localStorage.setItem('item', JSON.stringify(getItems));
 
@@ -110,9 +114,9 @@ const Home: React.FC = () => {
           <img src={imageBag} alt="" />
         </button>
 
-        {itemsCard && (
-          <div className="itemsCard">
-            <p>{itemsCard}</p>
+        {quantityItemsCart && (
+          <div className="quantity-items-cart-circle">
+            <p>{quantityItemsCart}</p>
           </div>
         )}
 
@@ -129,18 +133,10 @@ const Home: React.FC = () => {
               <div className="texts">
                 <p className="name">{i.name}</p>
                 <p className="price">R$ {i.price}</p>
-                <p className="stock">Qtd. {i.stock}</p>
+                <p className="amount">Qtd. {i.stock}</p>
                 <Button type="button" onClick={() => addCard(i.id)}>
                   Adicionar ao Carrinho
                 </Button>
-
-                {/* <button type="button" onClick={() => addItem(i.id)}>
-                  Add
-                </button>
-
-                <button type="button" onClick={() => removeItem(i.id)}>
-                  remove
-                </button> */}
               </div>
             </Product>
           ))}
